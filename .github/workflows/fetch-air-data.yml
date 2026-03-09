@@ -1,0 +1,101 @@
+name: Fetch Bishkek Air Quality Data
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-and-save:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Fetch AQI from AQICN
+        env:
+          AQICN_API_KEY: ${{ secrets.AQICN_API_KEY }}
+        run: |
+          curl -s "https://api.waqi.info/feed/bishkek/?token=${AQICN_API_KEY}" \
+            -o aqi_live.json
+
+      - name: Fetch forecast from OpenWeatherMap One Call 3.0
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        run: |
+          curl -s "https://api.openweathermap.org/data/3.0/onecall?lat=42.8746&lon=74.5698&exclude=minutely,alerts&units=metric&appid=${OPENWEATHER_API_KEY}" \
+            -o weather_forecast.json
+
+      - name: Fetch air pollution forecast from OpenWeatherMap
+        env:
+          OPENWEATHER_API_KEY: ${{ secrets.OPENWEATHER_API_KEY }}
+        run: |
+          curl -s "https://api.openweathermap.org/data/2.5/air_pollution/forecast?lat=42.8746&lon=74.5698&appid=${OPENWEATHER_API_KEY}" \
+            -o air_forecast.json
+
+      - name: Combine everything into one file
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          echo "{
+            \"last_updated\": \"${TIMESTAMP}\",
+            \"aqi_live\": $(cat aqi_live.json),
+            \"weather_forecast\": $(cat weather_forecast.json),
+            \"air_forecast\": $(cat air_forecast.json)
+          }" > tutun_data.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "tutun-bot"
+          git config user.email "tutun-bot@users.noreply.github.com"
+          git add tutun_data.json
+          git diff --staged --quiet || git commit -m "data update $(date -u +%H:%M)"
+          git push
+```
+
+4. Scroll down — click **"Commit new file"**
+5. Leave the default commit message and click the green **"Commit new file"** button
+
+---
+
+## PART 5: Enable GitHub Pages
+
+1. Still in your repo — click **Settings**
+2. Scroll down the left sidebar to **"Pages"**
+3. Under **"Branch"** — click the dropdown that says "None" and select **main**
+4. Leave the folder as **/ (root)**
+5. Click **Save**
+6. A green banner will appear saying your site is being published
+
+Wait about 2 minutes. Then your live data URL will be:
+
+**`https://javokhirbek-abdullayev.github.io/tutun_content/tutun_data.json`**
+
+This is the single URL your Android app will call for everything — live AQI, weather forecast, air pollution forecast, all in one file, always fresh.
+
+---
+
+## PART 6: Test It Right Now
+
+Don't wait 5 minutes for the automatic schedule:
+
+1. In your repo click the **"Actions"** tab
+2. In the left list you'll see **"Fetch Bishkek Air Quality Data"**
+3. Click it
+4. On the right side click **"Run workflow"** → **"Run workflow"** (the green button)
+5. A yellow circle will appear — that means it's running
+6. After about 20 seconds it turns green ✅ — success
+7. Go back to your repo's main page — you'll now see `tutun_data.json` in the file list
+8. Click it and confirm it contains real Bishkek data with a `last_updated` timestamp
+
+If you see a red ❌ instead of green, click on the failed run, then click the failed step — it will show you the exact error. The most common cause is a typo in the secret name. Double-check that your secrets are named exactly `OPENWEATHER_API_KEY` and `AQICN_API_KEY` with no spaces.
+
+---
+
+## PART 7: The One URL for Your App
+
+When you get to building in Cursor AI, this is the only URL your app needs for all weather and air data:
+```
+https://javokhirbek-abdullayev.github.io/tutun_content/tutun_data.json
