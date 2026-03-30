@@ -1,0 +1,92 @@
+[
+  {
+    "id": "1",
+    "badge": "News",
+    "title": {
+      "ky": "93,000 жаңы бак-дарактар",
+      "ru": "93,000 новых деревьев",
+      "uz": "93,000 ta yangi daraxtlar",
+      "en": "93,000 New Trees for Bishkek"
+    },
+    "subtitle": {
+      "ky": "Бишкекте жазгы жашылдандыруу өнөктүгү башталды",
+      "ru": "В Бишкеке стартовала весенняя кампания по озеленению",
+      "uz": "Bishkekda bahorgi ko'kalamzorlashtirish kampaniyasi boshlandi",
+      "en": "Spring greening campaign is now underway across the capital"
+    },
+    "image": "carousel/images/01.png",
+    "link": "https://m.akipress.com/news:887461:Bishkek_plans_to_plant_over_93,000_trees/"
+  },
+  {
+    "id": "2",
+    "badge": "YouTube",
+    "title": {
+      "ky": "Электробустар: Кантип иштейт?",
+      "ru": "Электробусы: Как они работают?",
+      "uz": "Elektrobuslar: Ular qanday ishlaydi?",
+      "en": "Electric Buses: How They Work"
+    },
+    "subtitle": {
+      "ky": "Бишкектин жаңы экологиялык транспортун ичинен көрүңүз",
+      "ru": "Посмотрите на новый эко-транспорт Бишкека изнутри",
+      "uz": "Bishkekning yangi eko-transportini ichidan ko'ring",
+      "en": "Take an inside look at Bishkek's new eco-friendly fleet"
+    },
+    "image": "carousel/images/02.png",
+    "link": "https://www.youtube.com/watch?v=Wufikj-1fVw"
+  },
+  {
+    "id": "3",
+    "badge": "Chrome",
+    "title": {
+      "ky": "Абанын сапаты: Жаңы долбоор",
+      "ru": "Качество воздуха: Новый проект",
+      "uz": "Havo sifati: Yangi loyiha",
+      "en": "Air Quality: New $10M Project"
+    },
+    "subtitle": {
+      "ky": "KOICA Бишкектеги ышты азайтууга жардам берет",
+      "ru": "KOICA поможет уменьшить смог в Бишкеке",
+      "uz": "KOICA Bishkekdagi smogni kamaytirishga yordam beradi",
+      "en": "KOICA and Kyrgyzstan launch initiative to tackle urban smog"
+    },
+    "image": "carousel/images/03.png",
+    "link": "https://24.kg/english/360582___Air_quality_improvement_project_to_be_implemented_in_Bishkek_and_Chui_region/"
+  },
+  {
+    "id": "4",
+    "badge": "Chrome",
+    "title": {
+      "ky": "Бишкекте эрте жаз: +10°C",
+      "ru": "Ранняя весна в Бишкеке: +10°C",
+      "uz": "Bishkekda erta bahor: +10°C",
+      "en": "Early Spring in Bishkek: +10°C"
+    },
+    "subtitle": {
+      "ky": "Аба ырайы нормадан 2 градуска жогору болушу күтүлөт",
+      "ru": "Температура ожидается на 2 градуса выше нормы",
+      "uz": "Harorat odatdagidan 2 daraja yuqori bo'lishi kutilmoqda",
+      "en": "Temperatures are forecasted to be 2°C above seasonal norms"
+    },
+    "image": "carousel/images/04.png",
+    "link": "https://www.weather2travel.com/kyrgyzstan/bishkek/march/"
+  },
+  {
+    "id": "5",
+    "badge": "News",
+    "title": {
+      "ky": "2 миллион гүл отургузулат",
+      "ru": "2 миллиона цветов для города",
+      "uz": "Shahar uchun 2 million gul",
+      "en": "2 Million Flowers for the City"
+    },
+    "subtitle": {
+      "ky": "Бишкек 2026-жылы гүлдөр менен кооздолот",
+      "ru": "Бишкек украсят цветами в 2026 году",
+      "uz": "Bishkek 2026-yilda gullar bilan bezatiladi",
+      "en": "Bishkek to be decorated with millions of blooms this year"
+    },
+    "image": "carousel/images/05.png",
+    "link": "https://newslinekg.com/article/1214783/"
+  }
+]
